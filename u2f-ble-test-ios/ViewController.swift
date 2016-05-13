@@ -15,10 +15,12 @@ class ViewController: UIViewController {
     @IBOutlet private weak var stopButton: UIButton!
     @IBOutlet private weak var stateLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var textView: UITextView!
     
     private lazy var bluetoothManager: BluetoothManager = {
         let manager = BluetoothManager()
         manager.onStateChanged = self.handleStateChanged
+        manager.onDebugMessage = self.handleDebugMessage
         return manager
     }()
 
@@ -31,8 +33,13 @@ class ViewController: UIViewController {
     }
     
     private func handleStateChanged(manager: BluetoothManager, state: BluetoothManagerState) {
-        print("STATE = \(state)")
         updateUI()
+    }
+    
+    private func handleDebugMessage(manager: BluetoothManager, message: String) {
+        textView.text = textView.text + "\(message)\n"
+        let range = NSMakeRange(textView.text.characters.count - 1, 1)
+        textView.scrollRangeToVisible(range)
     }
     
     private func updateUI() {
@@ -47,6 +54,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textView.layoutManager.allowsNonContiguousLayout = false
         updateUI()
     }
 

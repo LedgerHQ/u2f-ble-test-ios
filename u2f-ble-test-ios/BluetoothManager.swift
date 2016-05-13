@@ -9,10 +9,6 @@
 import Foundation
 import CoreBluetooth
 
-private let deviceServiceUUID = "0000FFFD-0000-1000-8000-00805F9B34FB"
-private let writeCharacteristicUUID = "F1D0FFF1-DEAA-ECEE-B42F-C9BA7ED623BB"
-private let notifyCharacteristicUUID = "F1D0FFF2-DEAA-ECEE-B42F-C9BA7ED623BB"
-
 enum BluetoothManagerState: String {
     case Scanning
     case Connecting
@@ -24,13 +20,15 @@ enum BluetoothManagerState: String {
 final class BluetoothManager: NSObject {
     
     var onStateChanged: ((BluetoothManager, BluetoothManagerState) -> Void)?
-    var deviceName: String? { return bluetoothDevice?.name }
+    var onDebugMessage: ((BluetoothManager, String) -> Void)?
+    var deviceName: String? { return deviceManager?.deviceName }
     
     private var centralManager: CBCentralManager?
-    private var bluetoothDevice: CBPeripheral?
+    private var deviceManager: DeviceManager?
     private(set) var state = BluetoothManagerState.Disconnected {
         didSet {
             onStateChanged?(self, self.state)
+            onDebugMessage?(self, "New state: \(self.state.rawValue)")
         }
     }
     
@@ -51,10 +49,16 @@ final class BluetoothManager: NSObject {
             self.centralManager = nil
             state = .Disconnected
         }
-        else if state == .Connecting || state == .Connected, let device = bluetoothDevice {
+        else if state == .Connecting || state == .Connected, let device = deviceManager?.peripheral {
             centralManager.cancelPeripheralConnection(device)
             state = .Disconnecting
         }
+    }
+    
+    private func resetState() {
+        deviceManager = nil
+        centralManager = nil
+        state = .Disconnected
     }
     
 }
@@ -64,7 +68,8 @@ extension BluetoothManager: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(central: CBCentralManager) {
         if central.state == .PoweredOn && state == .Scanning {
             // bluetooth stack is ready, start scanning
-            let serviceUUID = CBUUID(string: deviceServiceUUID)
+            onDebugMessage?(self, "Bluetooth stack is ready, scanning devices")
+            let serviceUUID = CBUUID(string: DeviceManager.serviceUUID)
             central.scanForPeripheralsWithServices([serviceUUID], options: nil)
         }
     }
@@ -74,7 +79,8 @@ extension BluetoothManager: CBCentralManagerDelegate {
         guard let connectable = advertisementData[CBAdvertisementDataIsConnectable] as? NSNumber where connectable.boolValue == true else { return }
         
         // a device has been found
-        bluetoothDevice = peripheral
+        onDebugMessage?(self, "Found connectable device \"\(peripheral.name)\", connecting \(peripheral.identifier.UUIDString)")
+        deviceManager = DeviceManager(peripheral: peripheral)
         central.stopScan()
         central.connectPeripheral(peripheral, options: nil)
         state = .Connecting
@@ -84,23 +90,24 @@ extension BluetoothManager: CBCentralManagerDelegate {
         guard state == .Connecting else { return }
         
         // we're connected
+        onDebugMessage?(self, "Successfully connected device \(peripheral.identifier.UUIDString)")
         state = .Connected
     }
 
     func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         guard state == .Connecting else { return }
         
-        // fallback to disconnection
-        centralManager(central, didDisconnectPeripheral: peripheral, error: error)
+        // failed to connect
+        onDebugMessage?(self, "Failed to connect device \(peripheral.identifier.UUIDString), error: \(error?.description)")
+        resetState()
     }
     
     func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         guard state == .Connecting || state == .Connected || state == .Disconnecting else { return }
         
         // destroy central
-        bluetoothDevice = nil
-        centralManager = nil
-        state = .Disconnected
+        onDebugMessage?(self, "Disconnected device \(peripheral.identifier.UUIDString), error: \(error?.description)")
+        resetState()
     }
 
 }

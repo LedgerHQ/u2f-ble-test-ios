@@ -78,12 +78,22 @@
                                     <constraint firstItem="srC-vS-PRh" firstAttribute="baseline" secondItem="Sq4-js-0cx" secondAttribute="baseline" id="zHt-jh-Muf"/>
                                 </constraints>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7lW-rU-XfK">
+                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vxV-Cr-h0W" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="JPS-kg-8aX"/>
+                            <constraint firstItem="7lW-rU-XfK" firstAttribute="trailing" secondItem="vxV-Cr-h0W" secondAttribute="trailing" id="QiV-GD-U19"/>
+                            <constraint firstItem="7lW-rU-XfK" firstAttribute="top" secondItem="vxV-Cr-h0W" secondAttribute="bottom" constant="8" symbolic="YES" id="X83-pf-4VS"/>
+                            <constraint firstItem="7lW-rU-XfK" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="hbM-lR-eJe"/>
                             <constraint firstAttribute="trailing" secondItem="vxV-Cr-h0W" secondAttribute="trailing" id="ijC-vF-YlX"/>
                             <constraint firstItem="vxV-Cr-h0W" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="q5W-ve-z73"/>
+                            <constraint firstItem="7lW-rU-XfK" firstAttribute="leading" secondItem="vxV-Cr-h0W" secondAttribute="leading" id="ugK-wT-HKm"/>
                         </constraints>
                     </view>
                     <connections>
@@ -92,6 +102,7 @@
                         <outlet property="scanButton" destination="oPH-31-5dR" id="8AJ-ZO-aEd"/>
                         <outlet property="stateLabel" destination="eeq-FP-2BD" id="aLw-Ez-UgL"/>
                         <outlet property="stopButton" destination="IRJ-g2-OBZ" id="nf2-aj-l1f"/>
+                        <outlet property="textView" destination="7lW-rU-XfK" id="mMZ-OS-Mkb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

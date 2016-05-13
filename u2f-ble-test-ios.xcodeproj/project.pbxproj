@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		371A63451CE60CD800490A76 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A63441CE60CD800490A76 /* DeviceManager.swift */; };
 		37A639371CE5D711008A4159 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A639361CE5D711008A4159 /* AppDelegate.swift */; };
 		37A639391CE5D711008A4159 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A639381CE5D711008A4159 /* ViewController.swift */; };
 		37A6393C1CE5D711008A4159 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A6393A1CE5D711008A4159 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		371A63441CE60CD800490A76 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		37A639331CE5D711008A4159 /* u2f-ble-test-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "u2f-ble-test-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37A639361CE5D711008A4159 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37A639381CE5D711008A4159 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				37A6393F1CE5D711008A4159 /* LaunchScreen.storyboard */,
 				37A639421CE5D712008A4159 /* Info.plist */,
 				37A639481CE5DBC7008A4159 /* BluetoothManager.swift */,
+				371A63441CE60CD800490A76 /* DeviceManager.swift */,
 				37A6394A1CE5EEC7008A4159 /* CBCentralManagerState+Additions.swift */,
 			);
 			path = "u2f-ble-test-ios";
@@ -145,6 +148,7 @@
 				37A6394B1CE5EEC7008A4159 /* CBCentralManagerState+Additions.swift in Sources */,
 				37A639391CE5D711008A4159 /* ViewController.swift in Sources */,
 				37A639491CE5DBC7008A4159 /* BluetoothManager.swift in Sources */,
+				371A63451CE60CD800490A76 /* DeviceManager.swift in Sources */,
 				37A639371CE5D711008A4159 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
