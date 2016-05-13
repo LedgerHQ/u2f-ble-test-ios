@@ -55,6 +55,20 @@ final class BluetoothManager: NSObject {
         }
     }
     
+    private func handleDeviceManagerStateChanged(deviceManager: DeviceManager, state: DeviceManagerState) {
+        if state == .Bound {
+            onDebugMessage?(self, "Successfully connected device \(deviceManager.peripheral.identifier.UUIDString)")
+            self.state = .Connected
+        }
+        else if state == .Binding {
+            onDebugMessage?(self, "Binding to device \(deviceManager.peripheral.identifier.UUIDString)")
+        }
+        else if state == .NotBound {
+            onDebugMessage?(self, "Unable to bind to device \(deviceManager.peripheral.identifier.UUIDString)")
+            stopSession()
+        }
+    }
+    
     private func resetState() {
         deviceManager = nil
         centralManager = nil
@@ -69,7 +83,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
         if central.state == .PoweredOn && state == .Scanning {
             // bluetooth stack is ready, start scanning
             onDebugMessage?(self, "Bluetooth stack is ready, scanning devices")
-            let serviceUUID = CBUUID(string: DeviceManager.serviceUUID)
+            let serviceUUID = CBUUID(string: DeviceManager.deviceServiceUUID)
             central.scanForPeripheralsWithServices([serviceUUID], options: nil)
         }
     }
@@ -81,21 +95,21 @@ extension BluetoothManager: CBCentralManagerDelegate {
         // a device has been found
         onDebugMessage?(self, "Found connectable device \"\(peripheral.name)\", connecting \(peripheral.identifier.UUIDString)")
         deviceManager = DeviceManager(peripheral: peripheral)
+        deviceManager?.onStateChanged = handleDeviceManagerStateChanged
         central.stopScan()
         central.connectPeripheral(peripheral, options: nil)
         state = .Connecting
     }
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
-        guard state == .Connecting else { return }
+        guard state == .Connecting, let deviceManager = deviceManager else { return }
         
-        // we're connected
-        onDebugMessage?(self, "Successfully connected device \(peripheral.identifier.UUIDString)")
-        state = .Connected
+        // we're connected, bind to characteristics
+        deviceManager.bindForReadWrite()
     }
 
     func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
-        guard state == .Connecting else { return }
+        guard state == .Connecting, let _ = deviceManager else { return }
         
         // failed to connect
         onDebugMessage?(self, "Failed to connect device \(peripheral.identifier.UUIDString), error: \(error?.description)")
@@ -103,7 +117,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
     }
     
     func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
-        guard state == .Connecting || state == .Connected || state == .Disconnecting else { return }
+        guard state == .Connecting || state == .Connected || state == .Disconnecting, let _ = deviceManager else { return }
         
         // destroy central
         onDebugMessage?(self, "Disconnected device \(peripheral.identifier.UUIDString), error: \(error?.description)")
