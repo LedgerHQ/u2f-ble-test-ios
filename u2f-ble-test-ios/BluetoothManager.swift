@@ -24,6 +24,8 @@ enum BluetoothManagerState: String {
 final class BluetoothManager: NSObject {
     
     var onStateChanged: ((BluetoothManager, BluetoothManagerState) -> Void)?
+    var deviceName: String? { return bluetoothDevice?.name }
+    
     private var centralManager: CBCentralManager?
     private var bluetoothDevice: CBPeripheral?
     private(set) var state = BluetoothManagerState.Disconnected {

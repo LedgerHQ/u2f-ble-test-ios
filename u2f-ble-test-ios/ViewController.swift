@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var scanButton: UIButton!
     @IBOutlet private weak var stopButton: UIButton!
     @IBOutlet private weak var stateLabel: UILabel!
+    @IBOutlet private weak var nameLabel: UILabel!
     
     private lazy var bluetoothManager: BluetoothManager = {
         let manager = BluetoothManager()
@@ -39,6 +40,8 @@ class ViewController: UIViewController {
         stateLabel.text = bluetoothManager.state.rawValue
         scanButton.enabled = bluetoothManager.state == .Disconnected
         stopButton.enabled = bluetoothManager.state == .Connecting || bluetoothManager.state == .Connected || bluetoothManager.state == .Scanning
+        nameLabel.hidden = bluetoothManager.state != .Connected
+        nameLabel.text = bluetoothManager.deviceName
     }
     
     override func viewDidLoad() {
