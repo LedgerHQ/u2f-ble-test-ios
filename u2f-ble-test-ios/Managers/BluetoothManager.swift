@@ -21,6 +21,7 @@ final class BluetoothManager: NSObject {
     
     var onStateChanged: ((BluetoothManager, BluetoothManagerState) -> Void)?
     var onDebugMessage: ((BluetoothManager, String) -> Void)?
+    var onReceivedAPDU: ((BluetoothManager, NSData) -> Void)?
     var deviceName: String? { return deviceManager?.deviceName }
     
     private var centralManager: CBCentralManager?
@@ -55,18 +56,34 @@ final class BluetoothManager: NSObject {
         }
     }
     
+    func exchangeAPDU(data: NSData) {
+        guard state == .Connected else { return }
+        
+        // send data
+        onDebugMessage?(self, "Exchanging APDU = \(data)")
+        deviceManager?.exchangeAPDU(data)
+    }
+    
     private func handleDeviceManagerStateChanged(deviceManager: DeviceManager, state: DeviceManagerState) {
         if state == .Bound {
             onDebugMessage?(self, "Successfully connected device \(deviceManager.peripheral.identifier.UUIDString)")
             self.state = .Connected
         }
         else if state == .Binding {
-            onDebugMessage?(self, "Binding to device \(deviceManager.peripheral.identifier.UUIDString)")
+            onDebugMessage?(self, "Binding to device \(deviceManager.peripheral.identifier.UUIDString)...")
         }
         else if state == .NotBound {
-            onDebugMessage?(self, "Unable to bind to device \(deviceManager.peripheral.identifier.UUIDString)")
+            onDebugMessage?(self, "Something when wrong with device \(deviceManager.peripheral.identifier.UUIDString)")
             stopSession()
         }
+    }
+    
+    private func handleDeviceManagerDebugMessage(deviceManager: DeviceManager, message: String) {
+        onDebugMessage?(self, message)
+    }
+    
+    private func handleDeviceManagerReceivedAPDU(deviceManager: DeviceManager, data: NSData) {
+        onReceivedAPDU?(self, data)
     }
     
     private func resetState() {
@@ -82,7 +99,7 @@ extension BluetoothManager: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(central: CBCentralManager) {
         if central.state == .PoweredOn && state == .Scanning {
             // bluetooth stack is ready, start scanning
-            onDebugMessage?(self, "Bluetooth stack is ready, scanning devices")
+            onDebugMessage?(self, "Bluetooth stack is ready, scanning devices...")
             let serviceUUID = CBUUID(string: DeviceManager.deviceServiceUUID)
             central.scanForPeripheralsWithServices([serviceUUID], options: nil)
         }
@@ -93,9 +110,11 @@ extension BluetoothManager: CBCentralManagerDelegate {
         guard let connectable = advertisementData[CBAdvertisementDataIsConnectable] as? NSNumber where connectable.boolValue == true else { return }
         
         // a device has been found
-        onDebugMessage?(self, "Found connectable device \"\(peripheral.name)\", connecting \(peripheral.identifier.UUIDString)")
+        onDebugMessage?(self, "Found connectable device \"\(peripheral.name)\", connecting \(peripheral.identifier.UUIDString)...")
         deviceManager = DeviceManager(peripheral: peripheral)
         deviceManager?.onStateChanged = handleDeviceManagerStateChanged
+        deviceManager?.onDebugMessage = handleDeviceManagerDebugMessage
+        deviceManager?.onAPDUReceived = handleDeviceManagerReceivedAPDU
         central.stopScan()
         central.connectPeripheral(peripheral, options: nil)
         state = .Connecting

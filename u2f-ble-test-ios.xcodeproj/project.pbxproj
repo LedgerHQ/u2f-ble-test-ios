@@ -7,18 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		371A63451CE60CD800490A76 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A63441CE60CD800490A76 /* DeviceManager.swift */; };
+		371A63501CE9E6E400490A76 /* DataReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A634D1CE9E6E400490A76 /* DataReader.swift */; };
+		371A63511CE9E6E400490A76 /* DataWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A634E1CE9E6E400490A76 /* DataWriter.swift */; };
+		371A63521CE9E6E400490A76 /* EndianConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A634F1CE9E6E400490A76 /* EndianConvertible.swift */; };
+		371A63571CE9E6FA00490A76 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A63541CE9E6FA00490A76 /* BluetoothManager.swift */; };
+		371A63591CE9E6FA00490A76 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A63561CE9E6FA00490A76 /* DeviceManager.swift */; };
+		371A635B1CE9E88800490A76 /* TransportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A635A1CE9E88800490A76 /* TransportHelper.swift */; };
+		371A635D1CE9E8AD00490A76 /* CBCentralManagerState+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A635C1CE9E8AD00490A76 /* CBCentralManagerState+Additions.swift */; };
+		371A63621CEA0C1400490A76 /* RegisterAPDU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A63611CEA0C1400490A76 /* RegisterAPDU.swift */; };
+		371A63641CEA126300490A76 /* APDUType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371A63631CEA126300490A76 /* APDUType.swift */; };
+		377AFA731CEB31FD00815B1C /* GMEllipticCurveCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 377AFA701CEB31FD00815B1C /* GMEllipticCurveCrypto.m */; };
+		377AFA741CEB31FD00815B1C /* GMEllipticCurveCrypto+hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 377AFA721CEB31FD00815B1C /* GMEllipticCurveCrypto+hash.m */; };
+		377AFA761CEB337500815B1C /* CryptoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377AFA751CEB337500815B1C /* CryptoHelper.swift */; };
+		378FC3FF1CEB01B7008CD35C /* AuthenticateAPDU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378FC3FE1CEB01B7008CD35C /* AuthenticateAPDU.swift */; };
 		37A639371CE5D711008A4159 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A639361CE5D711008A4159 /* AppDelegate.swift */; };
 		37A639391CE5D711008A4159 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A639381CE5D711008A4159 /* ViewController.swift */; };
 		37A6393C1CE5D711008A4159 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A6393A1CE5D711008A4159 /* Main.storyboard */; };
 		37A6393E1CE5D711008A4159 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37A6393D1CE5D711008A4159 /* Assets.xcassets */; };
 		37A639411CE5D711008A4159 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37A6393F1CE5D711008A4159 /* LaunchScreen.storyboard */; };
-		37A639491CE5DBC7008A4159 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A639481CE5DBC7008A4159 /* BluetoothManager.swift */; };
-		37A6394B1CE5EEC7008A4159 /* CBCentralManagerState+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A6394A1CE5EEC7008A4159 /* CBCentralManagerState+Additions.swift */; };
+		37FA855D1CEB5BC700BA056F /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 37FA855C1CEB5BC700BA056F /* Keychain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		371A63441CE60CD800490A76 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		371A634D1CE9E6E400490A76 /* DataReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataReader.swift; sourceTree = "<group>"; };
+		371A634E1CE9E6E400490A76 /* DataWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataWriter.swift; sourceTree = "<group>"; };
+		371A634F1CE9E6E400490A76 /* EndianConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndianConvertible.swift; sourceTree = "<group>"; };
+		371A63541CE9E6FA00490A76 /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		371A63561CE9E6FA00490A76 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		371A635A1CE9E88800490A76 /* TransportHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportHelper.swift; sourceTree = "<group>"; };
+		371A635C1CE9E8AD00490A76 /* CBCentralManagerState+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CBCentralManagerState+Additions.swift"; sourceTree = "<group>"; };
+		371A63611CEA0C1400490A76 /* RegisterAPDU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterAPDU.swift; sourceTree = "<group>"; };
+		371A63631CEA126300490A76 /* APDUType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APDUType.swift; sourceTree = "<group>"; };
+		377AFA6E1CEB31FC00815B1C /* u2f-ble-test-ios-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "u2f-ble-test-ios-Bridging-Header.h"; sourceTree = "<group>"; };
+		377AFA6F1CEB31FD00815B1C /* GMEllipticCurveCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GMEllipticCurveCrypto.h; path = Vendor/GMEllipticCurveCrypto/GMEllipticCurveCrypto.h; sourceTree = "<group>"; };
+		377AFA701CEB31FD00815B1C /* GMEllipticCurveCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GMEllipticCurveCrypto.m; path = Vendor/GMEllipticCurveCrypto/GMEllipticCurveCrypto.m; sourceTree = "<group>"; };
+		377AFA711CEB31FD00815B1C /* GMEllipticCurveCrypto+hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GMEllipticCurveCrypto+hash.h"; path = "Vendor/GMEllipticCurveCrypto/GMEllipticCurveCrypto+hash.h"; sourceTree = "<group>"; };
+		377AFA721CEB31FD00815B1C /* GMEllipticCurveCrypto+hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GMEllipticCurveCrypto+hash.m"; path = "Vendor/GMEllipticCurveCrypto/GMEllipticCurveCrypto+hash.m"; sourceTree = "<group>"; };
+		377AFA751CEB337500815B1C /* CryptoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoHelper.swift; sourceTree = "<group>"; };
+		378FC3FE1CEB01B7008CD35C /* AuthenticateAPDU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticateAPDU.swift; sourceTree = "<group>"; };
 		37A639331CE5D711008A4159 /* u2f-ble-test-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "u2f-ble-test-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37A639361CE5D711008A4159 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37A639381CE5D711008A4159 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,8 +52,8 @@
 		37A6393D1CE5D711008A4159 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37A639401CE5D711008A4159 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		37A639421CE5D712008A4159 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		37A639481CE5DBC7008A4159 /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
-		37A6394A1CE5EEC7008A4159 /* CBCentralManagerState+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CBCentralManagerState+Additions.swift"; sourceTree = "<group>"; };
+		37FA855C1CEB5BC700BA056F /* Keychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
+		37FA855F1CEB5DCC00BA056F /* Keychain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +67,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		371A634C1CE9E6E400490A76 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				371A634D1CE9E6E400490A76 /* DataReader.swift */,
+				371A634E1CE9E6E400490A76 /* DataWriter.swift */,
+				371A634F1CE9E6E400490A76 /* EndianConvertible.swift */,
+				371A635A1CE9E88800490A76 /* TransportHelper.swift */,
+				371A635C1CE9E8AD00490A76 /* CBCentralManagerState+Additions.swift */,
+				377AFA751CEB337500815B1C /* CryptoHelper.swift */,
+				37FA855C1CEB5BC700BA056F /* Keychain.m */,
+				37FA855F1CEB5DCC00BA056F /* Keychain.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		371A63531CE9E6FA00490A76 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				371A63541CE9E6FA00490A76 /* BluetoothManager.swift */,
+				371A63561CE9E6FA00490A76 /* DeviceManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		371A635E1CE9E9A700490A76 /* APDUs */ = {
+			isa = PBXGroup;
+			children = (
+				371A63631CEA126300490A76 /* APDUType.swift */,
+				371A63611CEA0C1400490A76 /* RegisterAPDU.swift */,
+				378FC3FE1CEB01B7008CD35C /* AuthenticateAPDU.swift */,
+			);
+			path = APDUs;
+			sourceTree = "<group>";
+		};
+		377AFA6D1CEB31F000815B1C /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				377AFA6F1CEB31FD00815B1C /* GMEllipticCurveCrypto.h */,
+				377AFA701CEB31FD00815B1C /* GMEllipticCurveCrypto.m */,
+				377AFA711CEB31FD00815B1C /* GMEllipticCurveCrypto+hash.h */,
+				377AFA721CEB31FD00815B1C /* GMEllipticCurveCrypto+hash.m */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
 		37A6392A1CE5D711008A4159 = {
 			isa = PBXGroup;
 			children = (
@@ -62,13 +133,15 @@
 			children = (
 				37A639361CE5D711008A4159 /* AppDelegate.swift */,
 				37A639381CE5D711008A4159 /* ViewController.swift */,
+				371A63531CE9E6FA00490A76 /* Managers */,
+				371A635E1CE9E9A700490A76 /* APDUs */,
+				371A634C1CE9E6E400490A76 /* Utils */,
+				377AFA6D1CEB31F000815B1C /* Vendor */,
 				37A6393A1CE5D711008A4159 /* Main.storyboard */,
 				37A6393D1CE5D711008A4159 /* Assets.xcassets */,
 				37A6393F1CE5D711008A4159 /* LaunchScreen.storyboard */,
+				377AFA6E1CEB31FC00815B1C /* u2f-ble-test-ios-Bridging-Header.h */,
 				37A639421CE5D712008A4159 /* Info.plist */,
-				37A639481CE5DBC7008A4159 /* BluetoothManager.swift */,
-				371A63441CE60CD800490A76 /* DeviceManager.swift */,
-				37A6394A1CE5EEC7008A4159 /* CBCentralManagerState+Additions.swift */,
 			);
 			path = "u2f-ble-test-ios";
 			sourceTree = "<group>";
@@ -145,11 +218,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37A6394B1CE5EEC7008A4159 /* CBCentralManagerState+Additions.swift in Sources */,
+				377AFA741CEB31FD00815B1C /* GMEllipticCurveCrypto+hash.m in Sources */,
+				37FA855D1CEB5BC700BA056F /* Keychain.m in Sources */,
 				37A639391CE5D711008A4159 /* ViewController.swift in Sources */,
-				37A639491CE5DBC7008A4159 /* BluetoothManager.swift in Sources */,
-				371A63451CE60CD800490A76 /* DeviceManager.swift in Sources */,
+				371A63641CEA126300490A76 /* APDUType.swift in Sources */,
+				371A63591CE9E6FA00490A76 /* DeviceManager.swift in Sources */,
+				371A63621CEA0C1400490A76 /* RegisterAPDU.swift in Sources */,
+				371A635B1CE9E88800490A76 /* TransportHelper.swift in Sources */,
+				371A63511CE9E6E400490A76 /* DataWriter.swift in Sources */,
+				377AFA731CEB31FD00815B1C /* GMEllipticCurveCrypto.m in Sources */,
+				378FC3FF1CEB01B7008CD35C /* AuthenticateAPDU.swift in Sources */,
+				371A63501CE9E6E400490A76 /* DataReader.swift in Sources */,
+				371A635D1CE9E8AD00490A76 /* CBCentralManagerState+Additions.swift in Sources */,
+				371A63521CE9E6E400490A76 /* EndianConvertible.swift in Sources */,
+				371A63571CE9E6FA00490A76 /* BluetoothManager.swift in Sources */,
 				37A639371CE5D711008A4159 /* AppDelegate.swift in Sources */,
+				377AFA761CEB337500815B1C /* CryptoHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = "u2f-ble-test-ios/Info.plist";
@@ -270,6 +355,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = co.ledger.u2fbletest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3b6928eb-1bc8-4b44-8bd6-ae18213e7cd0";
+				SWIFT_OBJC_BRIDGING_HEADER = "u2f-ble-test-ios/u2f-ble-test-ios-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -277,6 +364,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = "u2f-ble-test-ios/Info.plist";
@@ -285,6 +373,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = co.ledger.u2fbletest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3b6928eb-1bc8-4b44-8bd6-ae18213e7cd0";
+				SWIFT_OBJC_BRIDGING_HEADER = "u2f-ble-test-ios/u2f-ble-test-ios-Bridging-Header.h";
 			};
 			name = Release;
 		};

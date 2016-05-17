@@ -1,0 +1,3 @@
+[submodule "u2f-ble-test-ios/Vendor/GMEllipticCurveCrypto"]
+	path = u2f-ble-test-ios/Vendor/GMEllipticCurveCrypto
+	url = https://github.com/ricmoo/GMEllipticCurveCrypto
